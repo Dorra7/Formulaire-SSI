@@ -3,34 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendu SSI - Formulaire</title>
+    <title>SSI - Interface d'Authentification Sécurisée</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="form-container">
-        <div class="logo-box">
-            <span class="logo-text">Logo</span>
-        </div>
+    <main class="auth-container">
+        <header class="auth-header">
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Logo Institutionnel" class="logo">
+            </div>
+            <h1>Authentification</h1>
+        </header>
         
-        <form id="loginForm">
-            <div id="inputs-container">
-                <input type="text" id="username" placeholder="identifiant" required>
-                <input type="password" id="password" placeholder="Mot de passse" required>
+        <form id="authForm" class="auth-form">
+            <div id="dynamic-fields" class="fields-group">
+                <div class="input-wrapper">
+                    <label for="username">Identifiant</label>
+                    <input type="text" id="username" name="username" placeholder="Saisissez votre identifiant" required>
+                </div>
+                
+                <div class="input-wrapper">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
             </div>
 
-            <div class="button-group">
-                <button type="button" class="btn" onclick="resetFields()">Reset</button>
-                <button type="button" class="btn" onclick="validate()">Valider</button>
-                <button type="button" class="btn" onclick="addAccount()">Ajout Compte</button>
-            </div>
+            <nav class="actions-nav">
+                <button type="button" class="btn btn-secondary" onclick="uiController.reset()">Réinitialiser</button>
+                <button type="button" class="btn btn-primary" onclick="authService.validate()">Valider</button>
+                <button type="button" class="btn btn-outline" onclick="uiController.addField()">Ajouter Compte</button>
+            </nav>
         </form>
 
-        <div id="message-area">
-            <p id="label-msg">Message :</p>
-            <p id="content-msg"></p>
-        </div>
-    </div>
+        <section id="feedback-panel" class="feedback-panel">
+            <span class="feedback-label">Statut du système :</span>
+            <p id="feedback-message" class="message-placeholder">En attente d'action...</p>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
