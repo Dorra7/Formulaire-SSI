@@ -5,10 +5,10 @@ Ce projet implémente une interface d'authentification persistante permettant la
 ## Installation et Lancement
 
 1. Cloner le dépôt sur votre machine locale :
-   git clone https://github.com/Dorra7/Formulaire-d-authentification---S-curit-des-syst-mes-d-informations.git
+   git clone https://github.com/Dorra7/Formulaire-SSI.git
 
 2. Accéder au dossier du projet :
-   cd Formulaire-d-authentification---S-curit-des-syst-mes-d-informations
+   cd Formulaire-SSI
 
 3. Lancer l'application :
    L'application peut être lancée en ouvrant directement le fichier index.html dans un navigateur ou via un serveur local (type Live Server).
