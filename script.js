@@ -1,5 +1,6 @@
 
-//SÉCURITÉ - Hachage de mot de passe 
+//  SÉCURITÉ 
+//  Hachage de mot de passe 
  
 async function hashPassword(password) {
     const encoder = new TextEncoder();
@@ -14,10 +15,9 @@ async function hashPassword(password) {
 const storageService = {
     DB_NAME: 'tp1_ssi',
 
-    // Initialisation avec un compte administrateur (haché par sécurité)
+    // Initialisation avec un compte administrateur 
     async init() {
         if (!localStorage.getItem(this.DB_NAME)) {
-            // Assure-toi que le nom de la variable ici correspond à celui utilisé en dessous
             const hashedAdminPass = await hashPassword("password123"); 
             const defaultUsers = [{ login: "admin", pass: hashedAdminPass }];
             localStorage.setItem(this.DB_NAME, JSON.stringify(defaultUsers));
@@ -42,7 +42,7 @@ const storageService = {
     }
 };
 
-// INTERFAce UTILISATEUR 
+// INTERFACE UTILISATEUR 
 const uiController = {
     messageElement: document.getElementById('feedback-message'),
     fieldsContainer: document.getElementById('dynamic-fields'),
@@ -92,7 +92,6 @@ const authService = {
 
         const users = storageService.getUsers();
         
-        // Hachage de la saisie pour comparaison avec la base locale
         const inputHash = await hashPassword(pass);
         const authenticatedUser = users.find(u => u.login === user && u.pass === inputHash);
 
@@ -104,7 +103,7 @@ const authService = {
     }
 };
 
-// Initialisation sécurisée au chargement
+// Initialisation 
 window.onload = async () => {
     await storageService.init();
 };
